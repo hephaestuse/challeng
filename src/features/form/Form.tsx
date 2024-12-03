@@ -19,6 +19,7 @@ function Form() {
     password: "",
   });
   const [errors, setErrors] = useState<errorValues>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     setValue((prev) => ({
       ...prev,
@@ -46,7 +47,7 @@ function Form() {
     const validateMessage = validate();
     if (validateMessage === true) {
       console.log("Form submitted successfully:");
-      getUser(value, setErrorMessage);
+      getUser(value, setErrorMessage, setIsLoading);
     } else {
       console.log("not submited", validateMessage);
     }
@@ -103,7 +104,9 @@ function Form() {
         onchange={handleChange}
         required={true}
       />
-      <Button>submit</Button>
+      <Button disabled={isLoading}>
+        {isLoading ? "Loading..." : "submit"}
+      </Button>
     </form>
   );
 }

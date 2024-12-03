@@ -8,9 +8,11 @@ export type FormValues = {
 
 export async function getUser(
   value: FormValues,
-  setErrorMessage: React.Dispatch<React.SetStateAction<string>>
+  setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
+  loadingStateFunc: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   try {
+    loadingStateFunc(true);
     const { data, error } = await supabase
       .from("users")
       .select("*")
@@ -27,5 +29,6 @@ export async function getUser(
   } catch (error: any) {
     setErrorMessage(`Login error: ${error.message}`);
   }
+  loadingStateFunc(false);
 }
 /************************end get user ***************************************/
