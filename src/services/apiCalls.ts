@@ -12,7 +12,7 @@ export async function getUser(
 ) {
   try {
     const { data, error } = await supabase
-      .from<formValues>("users")
+      .from("users")
       .select("*")
       .eq("email", value.email)
       .eq("password", value.password);
