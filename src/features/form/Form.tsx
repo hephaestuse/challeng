@@ -58,7 +58,7 @@ function Form() {
       className="backdrop-blur-md shadow-lg
     shadow-stone-800 rounded-3xl
     border-stone-800 border-2 flex flex-col
-    justify-center items-center w-1/2 h-1/2 "
+    justify-center items-center w-3/4 md:w-1/2 h-1/2 min-h-96 "
     >
       {errorMessage.includes("Welcome back") ? (
         <p className="text-lime-800 font-extrabold p-2 border-2 border-lime-300 rounded-md">
